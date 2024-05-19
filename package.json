@@ -1,0 +1,14 @@
+{
+    "name": "project_3",
+    "version": "1.0.0",
+    "description": "our 3rd project",
+    "main": "main.js",
+    "scripts": {
+        "start": "node server/main.js"
+    },
+    "author": "nas, crs",
+    "license": "MIT",
+    "dependencies": {
+
+    }
+}
