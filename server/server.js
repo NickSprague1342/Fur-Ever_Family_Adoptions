@@ -1,20 +1,22 @@
 const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 3001
-const { apServer } = require ('@apollo/server')
-const { authMw } = require ('server/utils/auth.js')
-const {typedefs, resolvers} = require('/Users/nicholassprague/bootcamp/PROJECTS/Project_3/server/schemas')
+const database = require ('.config/connections')
+const { ApolloServer } = require ('@apollo/server')
+const { authMw } = require ('.auth.js')
+const { expMw } = require('@apollo/server')
+const {typedefs, resolvers} = require('./schemas')
+const app = express()
 const apServer = new ApolloServer({
-    typedefs,
-    resolvers
+    typedefs,resolvers
 });
 
 const apolloStart = async () => {
-    await server.start();
+    await apServer.start();
     app.use(express.urlencoded({ extended: false }));
     app.use(express.json());
-    app.use('/graphql', expressMiddleware(server, {
-        context: authMiddleware
+    app.use('/graphql', expMw(server, {
+        context: authMw
     }));
     if (process.env.NODE_ENV === 'production') {
         app.use(express.static(path.join(__dirname, '../client/dist')));
@@ -24,7 +26,7 @@ const apolloStart = async () => {
     }
     db.once('open', () => {
         app.listen(PORT, () => {
-            console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
+            console.log(`GraphQL @ http://localhost:${PORT}/graphql`);
         });
     });
 };
