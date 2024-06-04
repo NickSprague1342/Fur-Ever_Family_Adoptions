@@ -1,3 +1,6 @@
+// 21-MERN 13-Ins_useQuery
+// https://dev.to/shubhamtiwari909/graphql-typedefs-4bdf
+//These typedefs describe the structure of the data that can be queried or manipulated using the GraphQL API.
 const typeDefs = `
 type Users {
     _id : ID
@@ -24,8 +27,6 @@ type Auth {
     users: Users
 }
 
-// 21-MERN 13-Ins_useQuery
-// https://dev.to/shubhamtiwari909/graphql-typedefs-4bdf
 type Query {
 users: [Users!]!
 users(id: ID!): Users!
@@ -41,7 +42,7 @@ type Mutation {
     
     addUsers(id: ID!, firstName: String!, lastName: String!, email: String!) : Users
     
-    logInUsers((id: ID!, firstName: String!, lastName: String!, email: String!) : Users
+    loginUsers((id: ID!, firstName: String!, lastName: String!, email: String!) : Users
 }`;
 
 module.exports = typeDefs;
