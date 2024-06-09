@@ -12,7 +12,7 @@ const resolvers = {
             if (context.users) {
                 return Users.findOne({ _id: context.users._id }).populate('animals');
             }
-            throw AuthenticationError('You must be logged in');
+            throw new AuthenticationError('You must be logged in');
         },
         // This code checks if there's a user authenticated in the context. If yes, it finds an animal in the database by the provided ID and populates its users field. If not, it throws an AuthenticationError.
         getAnimals: async (parent, { id }, context) => {
