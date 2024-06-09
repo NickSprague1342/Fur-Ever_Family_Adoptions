@@ -8,20 +8,25 @@ const { Users, Animals, } = require ('../models')
 const resolvers = {
     Query: {
         // This code checks if there's a user authenticated in the context. If there is, it uses findOne to find the user in the database by their ID and populates their animals. If not, it throws an AuthenticationError.
-        me: async (parent, context) => {
+        me: async (parent, args, context) => {
             if (context.users) {
                 return Users.findOne({ _id: context.users._id }).populate('animals');
             }
             throw new AuthenticationError('You must be logged in');
         },
         // This code checks if there's a user authenticated in the context. If yes, it finds an animal in the database by the provided ID and populates its users field. If not, it throws an AuthenticationError.
-        getAnimals: async (parent, { id }, context) => {
+        getAnimal: async (parent, args, { id }, context) => {
+            if (context.users) {
+                return Animals.findOne({ _id: id }).populate('users');
+            } throw AuthenticationError('You must be logged in');
+        },
+        getAnimals: async (parent, args, { id }, context) => {
             if (context.users) {
                 return Animals.findOne({ _id: id }).populate('users');
             } throw AuthenticationError('You must be logged in');
         },
         // This code fetches animals using fetchAnimals(), logs the retrieved animals to the console, and returns the pets property from the retrieved animals.
-        getPets:  async (parent, context) => {
+        getPets:  async (parent, args, context) => {
             const retrievedAnimals = await fetchAnimlas();
 
             console.log(retrievedAnimlas);

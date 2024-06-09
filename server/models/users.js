@@ -70,7 +70,7 @@ usersSchema.virtual('fullName').
     });
 
     //This code defines a method called generateAuthToken for documents of the usersSchema schema. This method generates an authentication token (JWT) for the user.
-userSchema.methods.generateAuthToken = function () {
+usersSchema.methods.generateAuthToken = function () {
     const token = sign({ _id: this._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
     return token;
 };
