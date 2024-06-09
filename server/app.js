@@ -30,12 +30,12 @@ const server = new ApolloServer({
 
 server.startMw({ app, path: './graphql'})
 
-const pFApiKey = process.env.'pFApiKey'
-const pFApiSecret = process.env.'pFApiSecret'
+const pFApiKey = process.env.'API_KEY'
+const pFApiSecret = process.env.'API_SECRET'
 
 app.get('/getAnimals', async (req, res) => {
     try {
-        const animals = await fetchAnimals(pFApiKey, pFApiSecret)
+        const animals = await fetchAnimals(API_KEY, API_SECRET)
         res.json(animals)
     }catch (err) {
         console.err('Oops! We may have encountered an error! Please try again later!', err)
