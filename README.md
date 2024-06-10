@@ -26,9 +26,14 @@ To install this app, you will need to clone this repository into the folder of y
 Once you have your own copy of this application and have opened it in your code editor, open the terminal and type "npm install" to install all of the depencencies. Then type "npm run dev" to start the deveplopement server.
 
 
+## Screenshots 
+![ss1](<client/public/images/Screenshot 2024-06-10 at 3.01.22 PM.png>)
 
-## Tutorial Video 
-If there is a video tutorial available for this application, you can watch that video here. 
+![ss2](<client/public/images/Screenshot 2024-06-10 at 3.01.39 PM.png>)
+
+![ss3](<client/public/images/Screenshot 2024-06-10 at 3.02.00 PM.png>)
+
+![ss4](<client/public/images/Screenshot 2024-06-10 at 3.02.24 PM.png>)
 
 ## Credits
 The creators of this project are Nick Sprague and Cassie Sprague.
