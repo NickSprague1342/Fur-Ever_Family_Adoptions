@@ -15,9 +15,9 @@ connect (process.env.mongodb_URI, {
     newURL = true,
     uniTopo = true,
 })
-connection.running('error'. error) => {
-    console.log(`Database Error`), error
-};
+connection.running('error', (error) => {
+    console.log(`Database Error:`, error);
+});
 
 const server = new ApolloServer({
     typedefs, resolvers,
@@ -30,8 +30,8 @@ const server = new ApolloServer({
 
 server.startMw({ app, path: './graphql'})
 
-const pFApiKey = process.env.'API_KEY'
-const pFApiSecret = process.env.'API_SECRET'
+const API_KEY = process.env.'API_KEY',
+const API_SECRET = process.env.'API_SECRET',
 
 app.get('/getAnimals', async (req, res) => {
     try {
